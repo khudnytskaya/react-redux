@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getUsers } from "../../store/actions/getUsers";
-import { Table, Button, Icon } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 import styles from "./Users.module.css";
 import TableFrame from "../TableFrame/TableFrame"
 
@@ -28,7 +28,7 @@ const Users = ({ getUsers, usersList, usersLoading }) => {
   };
 
   const usersTable = renderUsers(list);
-
+  
   useEffect(() => {
     getUsers();
     setList(usersList)
@@ -69,6 +69,7 @@ const Users = ({ getUsers, usersList, usersLoading }) => {
         </Table.Header>          
             {usersTable}
       </Table>
+
     </div>
   );
 };
