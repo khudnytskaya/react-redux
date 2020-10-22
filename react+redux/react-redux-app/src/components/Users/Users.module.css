@@ -1,0 +1,11 @@
+.tableUsers {
+    padding: 0 20px;
+    margin: 0 auto !important; 
+    width: 80% !important;
+    cursor: pointer;
+    /* border: none !important; */
+}
+.title{
+    margin: 20px auto !important;
+    text-align: center;
+}
