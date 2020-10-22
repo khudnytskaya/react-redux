@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 const SortedPosts = ({
+    getPosts,
     postsList,
     postsLoading,
     userId }) => {
@@ -33,6 +34,8 @@ const SortedPosts = ({
     const [filterPosts, setFilterPosts] = useState(postsList || []);
 
     useEffect(() => {
+        console.log(userId)
+        getPosts(userId);
         if (userId) {
             setFilterPosts(
                 postsList.filter((item) => item.userId === userId)
@@ -40,7 +43,7 @@ const SortedPosts = ({
         } else {
             setFilterPosts(postsList);
         }
-    }, [userId]);
+    }, [userId, getPosts]);
 
     const postsTable = renderPosts(filterPosts);
 

@@ -4,7 +4,6 @@ import { getUsers } from "../../store/actions/getUsers";
 import { Table, Button, Icon } from 'semantic-ui-react';
 import styles from "./Users.module.css";
 import TableFrame from "../TableFrame/TableFrame"
-import { readPosts } from "../../api/posts";
 
 const mapStateToProps = (state) => ({
   usersList: state.users.users,
@@ -31,7 +30,6 @@ const Users = ({ getUsers, usersList, usersLoading }) => {
   const usersTable = renderUsers(list);
 
   useEffect(() => {
-    readPosts();
     getUsers();
     setList(usersList)
   }, [getUsers]);

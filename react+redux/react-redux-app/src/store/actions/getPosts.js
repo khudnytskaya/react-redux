@@ -6,9 +6,9 @@ import {
   } from "../types/posts";
    import { readPosts } from "../../api/posts";
   
-  export const getPosts = () => (dispatch) => {
+  export const getPosts = (userId) => (dispatch) => {
     dispatch({ type: POSTS_LOADING });
-    return readPosts()
+    return readPosts(userId)
       .then((posts) => {
         dispatch({ type: POSTS_SUCCESS, payload: posts });
       })
