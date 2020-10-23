@@ -48,7 +48,7 @@ const SortedPosts = ({
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell
-              width={5}
+              width={6}
             >
               Title
         </Table.HeaderCell>
@@ -59,7 +59,7 @@ const SortedPosts = ({
         </Table.HeaderCell>
             
             <Table.HeaderCell
-              width={2}
+              width={1}
             >
               Show details
             <Icon
