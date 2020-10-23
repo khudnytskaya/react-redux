@@ -43,7 +43,7 @@ const SortedPosts = ({
 
     return (
         <div >
-            <h1 className={styles.title}>Users</h1>
+            <h1 className={styles.title}>Posts</h1>
       <Table singleLine compact className={styles.tableUsers}>
         <Table.Header>
           <Table.Row>
@@ -72,7 +72,6 @@ const SortedPosts = ({
         </Table.Header>          
             {postsTable}
       </Table>
-
         </div>
     )
 }

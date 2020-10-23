@@ -1,0 +1,14 @@
+.postStyle {
+    padding: 0 20px;
+    margin: 70px auto !important; 
+    width: 80% !important;
+    cursor: pointer;
+}
+.title{
+    margin: 20px auto !important;
+    text-align: center;
+}
+.buttonStyle{
+    width: 165px ;
+    margin-bottom: 3px !important;
+}

@@ -9,7 +9,7 @@ const TableFrame = ({
 
     return (
         <Table.Body>
-            <Table.Cell>{name || title}</Table.Cell>
+            <Table.Cell style={{ wordWrap: 'break-word !important' }}>{name || title}</Table.Cell>
             <Table.Cell>{email || body}</Table.Cell>
             <Table.Cell>{username || ''}</Table.Cell>
 
@@ -27,7 +27,7 @@ const TableFrame = ({
                 </Button>
                 ) : (
                         <Button
-                        // onClick={() => history.push(`posts/${id}`)}
+                         onClick={() => history.push(`/details/${id}`)}
                         >
                             Details
                             <Icon

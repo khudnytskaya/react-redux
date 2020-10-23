@@ -6,6 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Users from './components/Users/Users';
 import SortedPosts from './components/SortedPosts/SortedPosts';
+import PostDetails from './components/PostDetails/PostDetails';
+import MoreDetails from './components/MoreDetails/MoreDetails';
 
 function App() {
   return (
@@ -15,8 +17,14 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={Users} />
-              <Route path="/posts/:id" render={({match})=>{
+              <Route path="/posts/:id" render={({ match }) => {
                 return <SortedPosts userId={match.params.id} />
+              }} />
+              <Route path="/details/:id" render={({ match }) => {
+                return <PostDetails postId={match.params.id} />
+              }} />
+               <Route path="/moreDetails/:id" render={({ match }) => {
+                return <MoreDetails postId={match.params.id} />
               }} />
             </Switch>
           </Router>
