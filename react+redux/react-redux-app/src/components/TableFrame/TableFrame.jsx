@@ -9,7 +9,7 @@ const TableFrame = ({
 
     return (
         <Table.Body>
-            <Table.Cell style={{ wordWrap: 'break-word !important' }}>{name || title}</Table.Cell>
+            <Table.Cell>{name || title}</Table.Cell>
             <Table.Cell>{email || body}</Table.Cell>
             <Table.Cell>{username || ''}</Table.Cell>
 

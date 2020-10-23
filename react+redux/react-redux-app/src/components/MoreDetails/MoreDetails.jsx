@@ -6,11 +6,12 @@ import { deleteComment } from "../../store/actions/deleteComment";
 import { Comment } from 'semantic-ui-react'
 
 import styles from "./MoreDetails.module.css";
-import PostDetails from '../PostDetails/PostDetails';
+import PostDetails from '../PostDetails/PostDetails'; 
+import DeleteCommentModal from './DeleteCommentModal';
+import CommentListItem from './CommentListItem';
 
 const mapStateToProps = (state) => ({
     commentsList: state.comments.comments,
-    commentsLoading: state.comments.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,48 +25,34 @@ const MoreDetails = ({
     getComments,
     postId,
     commentsList,
-    commentsLoading
 }) => {
-   
-    const renderComments = (arr) => {
-        if (arr.length === 0) {
-            return <h3>No comments</h3>;
-        }
-        if (arr && !commentsLoading) {
-            return arr.map((item) => <Comment.Group key={item.id}
-            className={styles.commentsStyle}> 
-                <Comment>
-                    <Comment.Content>
-                        <Comment.Author>{item.name}</Comment.Author>
-                        <Comment.Text>
-                        {item.body}
-                </Comment.Text>
-                        <Comment.Actions>
-                            <Comment.Action>Edit</Comment.Action>
-                            <Comment.Action>Delete</Comment.Action>   
-                        </Comment.Actions>
-                    </Comment.Content>
-                </Comment>
-            </Comment.Group>);
-        }
-        return null;
+    const [currentComment, setCurrentComment] = useState();
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
+
+    const handleRemove = (id) => {
+        deleteComment(id);
+        setModalOpen(false);
     };
+
 
     useEffect(() => {
         getComments(postId);
     }, []);
 
-    const comments = renderComments(commentsList);
-
-    const handleRemove = (id) => {
-        deleteComment(id);
-        // setModalOpen(false);
-      };
-
+   
     return (
         <div >
             <PostDetails postId={postId} />
-            {comments}
+            <CommentListItem list={commentsList}
+            config={{
+              modalOpen,
+              handleOpen,
+              handleClose,
+              handleRemove,
+            }}/>
         </div>
     )
 }
